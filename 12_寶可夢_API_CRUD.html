@@ -136,38 +136,38 @@
     let app = new Vue({
             el: '#app',
             data: {
-                pokemonList: [],
+                pokemonList: [],//放全部的寶可夢資料
                 //新增        
                 createPokemonData: {
-                name: "皮卡丘",
-                nickName: "皮皮",
-                type: "鼠寶可夢",
-                image: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png",
-                hp: 35,
-                speed: 90,
-                attack: 55,
-                defanse: 40,
-                spAttack: 50,
-                spDefense: 50,
+                    name: "皮卡丘",
+                    nickName: "皮皮",
+                    type: "鼠寶可夢",
+                    image: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png",
+                    hp: 35,
+                    speed: 90,
+                    attack: 55,
+                    defanse: 40,
+                    spAttack: 50,
+                    spDefense: 50,
             },
             //編輯        
             currentPokemon: {},
             enableEdit: false,
-        },
+            },
             created() {
-        },
+            },
             methods: {
-            getAllPokemon() {
+                getAllPokemon() {
+                },
+                selectEdit() {
+                },
+                createPokemon() {
+                },
+                updatePokemon() {
+                },
+                deletePokemon(pokemon) {
+                },
             },
-            selectEdit() {
-            },
-            createPokemon() {
-            },
-            updatePokemon() {
-            },
-            deletePokemon(pokemon) {
-            },
-        },
     });
     </script>
 </body>
