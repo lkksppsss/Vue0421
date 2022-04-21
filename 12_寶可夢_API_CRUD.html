@@ -164,7 +164,9 @@
                 getAllPokemon() {
                     axios.get(`${API_BASE_URL}/Pokemon`)
                         .then((res) => {
-                            console.log(res)
+                            if(res.data.status == 20000){
+                                this.pokemonList = res.data.result
+                            }
                         })
                         .catch((error) => { console.log(error) })
                 },
