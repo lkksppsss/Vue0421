@@ -23,7 +23,7 @@
 
     <style>
         .none-click {
-            pointer-events: none;
+            pointer-events: none;  /* 事件穿透 */
         }
     </style>
 </head>
@@ -31,9 +31,9 @@
     <div id="app" class="container">
         <b-card no-body>
             <b-tabs v-model="tabIndex" card>
-                <b-tab title="Tab 1" :title-link-class="linkClass(0)">Tab contents 1</b-tab>
-                <b-tab title="Tab 2" :title-link-class="linkClass(1)">Tab contents 2</b-tab>
-                <b-tab title="Tab 3" :title-link-class="linkClass(2)">Tab contents 3</b-tab>
+                <b-tab title="隱私政策" :title-link-class="linkClass(0)" title-item-class="none-click">Tab contents 1</b-tab>
+                <b-tab title="基本資料" :title-link-class="linkClass(1)" title-item-class="none-click">Tab contents 2</b-tab>
+                <b-tab title="確認資料" :title-link-class="linkClass(2)" title-item-class="none-click">Tab contents 3</b-tab>
             </b-tabs>
         </b-card>
 
