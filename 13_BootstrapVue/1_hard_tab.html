@@ -52,7 +52,7 @@
 
         <div class="d-flex justify-content-between mt-3">
             <b-button @click="tabIndex--">上一步</b-button>
-            <b-button @click="tabIndex++">下一步</b-button>
+            <b-button @click="tabIndex++" :disabled="!nextable">下一步</b-button>
         </div>
     </div>
 
@@ -73,7 +73,42 @@
                     accountErrorMsg: ''
                 }
             },
+            computed:{
+                nextable(){
+                    if(this.tabIndex == 0){
+                        if(this.alreadyRead == false) return false
+                    }
+
+                    return true
+                }
+            },
+            watch:{
+                memberInfo:{
+                    immediate: true,
+                    deep: true,
+                    handler(){
+                        this.checkMemberInfo()
+                    }
+                }
+            },
             methods:{
+                checkMemberInfo(){
+                    //account
+                    if(this.memberInfo.account == ''){
+                        this.memberInfoCheck.accountError = true
+                        this.memberInfoCheck.accountErrorMsg = '帳號必填'
+                    }else{
+                        this.memberInfoCheck.accountError = false
+                        this.memberInfoCheck.accountErrorMsg = ''
+                    }
+                },
+                checkMemberInfoVerify(){
+                    for(let prop in this.memberInfoCheck){
+                        if(this.memberInfoCheck[prop] == true){
+                            return false
+                        }
+                    }
+                },
                 linkClass(idx) {
                     if (this.tabIndex === idx) {
                     return ['bg-primary', 'text-light']
