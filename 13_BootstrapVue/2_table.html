@@ -33,6 +33,7 @@
         hover 
         :fields="fields"
         :items="items"
+        busy="isBusy"
         >
         <!-- (slot) -->
             <template #cell(Image)="row">
@@ -56,6 +57,7 @@
         let app = new Vue({
             el: '#app',
             data: {
+                isBusy: true,
                 //v1
                 // fields: [
                 //     'Id', 'Name'
