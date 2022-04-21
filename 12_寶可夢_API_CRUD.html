@@ -182,6 +182,19 @@
                 createPokemon() {
                 },
                 updatePokemon() {
+                    axios.put(`${API_BASE_URL}/Pokemon`, this.currentPokemon)
+                        .then((res) => {
+                            if(res.data.status == 20000 && res.data.result == true){
+                                toastr.success('更新成功') //toastr套件
+                                this.getAllPokemon()
+
+                                $('#edit-modal').modal('hide')
+                            }
+                            else{
+                                toastr.error('更新失敗')
+                            }
+                        })
+                        .catch((error) => { console.log(error) })
                 },
                 deletePokemon(pokemon) {
                 },
