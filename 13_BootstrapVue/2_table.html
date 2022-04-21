@@ -34,6 +34,22 @@
         :fields="fields"
         :items="items"
         >
+        <!-- (slot) -->
+            <template #cell(Image)="row">
+                <img class="w-25" :src="row.value" alt="">
+            </template>
+
+            <template #cell(Action)="row">
+                <b-button @click="row.toggleDetails">Show Detail</b-button>
+            </template>
+
+            <template #row-details="row">
+                <b-card>
+                    <ul>
+                        <li v-for="(value, key) in row.item" :key="key">{{ key }} : {{ value }}</li>
+                    </ul>
+                </b-card>
+            </template>
     </b-table>
     </div>
     <script>
@@ -45,9 +61,10 @@
                 //     'Id', 'Name'
                 // ],
                 fields: [
-                    {key: 'Id', label: '#', sortable: true},
+                    {key: 'Id', label: '#', sortable: false},
                     {key: 'Image', label: '##'},
-                    {key: 'Name', label: '名稱'}
+                    {key: 'Name', label: '名稱'},
+                    {key: 'Action', label: '功能'} //不存在的欄位 (slot)
                 ],
                 items: [
                     {
