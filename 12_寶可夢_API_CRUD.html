@@ -208,20 +208,38 @@
                         .catch((error) => { console.log(error) })
                 },
                 deletePokemon(pokemon) {
-                    axios.delete(`${API_BASE_URL}/Pokemon`, { data: pokemon})
-                        .then((res) => {
-                            if(res.data.status == 20000 && res.data.result == true){
-                                toastr.success('刪除成功')
-                                this.getAllPokemon()
-                            }
-                            else
-                            {
-                                toastr.error('刪除失敗')
-                            }
-                        })
-                        .catch((error) => {
 
-                        })
+                    this.$bvModal.msgBoxConfirm('確定刪除資料?',{ //bootstrap Vue 
+                        title: '警告',
+                        size: 'sm',
+                        okVariant: 'danger',
+                        cancelTitle: '取消',
+                        footerClass: 'p-2',
+                        hideHeaderClose: false,
+                        centered: true
+                    })
+                        .then(value => {
+                            if(value){
+                                axios.delete(`${API_BASE_URL}/Pokemon`, { data: pokemon})
+                                    .then((res) => {
+                                        if(res.data.status == 20000 && res.data.result == true){
+                                            toastr.success('刪除成功')
+                                            this.getAllPokemon()
+                                        }
+                                        else
+                                        {
+                                            toastr.error('刪除失敗')
+                                        }
+                                    })
+                                    .catch((error) => { console.log(error) })
+                            }
+                            else{
+                                toastr.warning('取消刪除')
+                            }
+                        }) 
+                        .catch((error) => { console.log(error) })
+
+                    
                 },
             },
     });
