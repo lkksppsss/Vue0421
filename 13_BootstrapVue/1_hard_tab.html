@@ -20,9 +20,15 @@
 
     <!-- Load the following for BootstrapVueIcons support -->
     <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+    <style>
+        .none-click {
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="container">
         <b-card no-body>
             <b-tabs v-model="tabIndex" card>
                 <b-tab title="Tab 1" :title-link-class="linkClass(0)">Tab contents 1</b-tab>
@@ -30,6 +36,11 @@
                 <b-tab title="Tab 3" :title-link-class="linkClass(2)">Tab contents 3</b-tab>
             </b-tabs>
         </b-card>
+
+        <div class="d-flex justify-content-between mt-3">
+            <b-button @click="tabIndex--">上一步</b-button>
+            <b-button @click="tabIndex++">下一步</b-button>
+        </div>
     </div>
 
 
