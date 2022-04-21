@@ -180,6 +180,17 @@
                     this.currentPokemon = copyPokemon
                 },
                 createPokemon() {
+                    axios.post(`${API_BASE_URL}/Pokemon`, this.createPokemonData)
+                        .then((res) => {
+                            if(res.data.status == 20000 && res.data.result == true){
+                                toastr.success('新增成功')
+                                this.getAllPokemon()
+                                $('#create-modal').modal('hide')
+                            }else{
+                                toastr.error('新增失敗')
+                            }
+                        })
+                        .catch((error) => { console.log(error) })
                 },
                 updatePokemon() {
                     axios.put(`${API_BASE_URL}/Pokemon`, this.currentPokemon)
