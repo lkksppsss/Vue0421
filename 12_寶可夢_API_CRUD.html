@@ -164,13 +164,20 @@
                 getAllPokemon() {
                     axios.get(`${API_BASE_URL}/Pokemon`)
                         .then((res) => {
-                            if(res.data.status == 20000){
+                            if(res.data.status == 20000){ //驗證 status == 20000 去做成功的事
                                 this.pokemonList = res.data.result
+                            }else{
+                                console.warn('撈資料失敗...')
                             }
                         })
                         .catch((error) => { console.log(error) })
                 },
-                selectEdit() {
+                selectEdit(pokemon) {
+                    this.enableEdit = false 
+
+                    let copyPokemon = { ...pokemon} //結構賦值
+
+                    this.currentPokemon = copyPokemon
                 },
                 createPokemon() {
                 },
