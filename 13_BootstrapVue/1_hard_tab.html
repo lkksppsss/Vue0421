@@ -31,7 +31,14 @@
     <div id="app" class="container">
         <b-card no-body>
             <b-tabs v-model="tabIndex" small card fill>
-                <b-tab title="隱私政策" :title-link-class="linkClass(0)" title-item-class="none-click">Tab contents 1</b-tab>
+                <b-tab title="隱私政策" :title-link-class="linkClass(0)" title-item-class="none-click">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae reprehenderit odio quibusdam eius nulla esse mollitia veniam sint doloribus, similique dolor cumque soluta nisi laborum assumenda cupiditate inventore nemo? Ipsam.
+
+                    <div>
+                        <input v-model="alreadyRead" id="check" type="checkbox" class="form-check-input">
+                        <label for="check" class="form-check-label">我已詳細閱讀</label>
+                    </div>
+                </b-tab>
                 <b-tab title="基本資料" :title-link-class="linkClass(1)" title-item-class="none-click">Tab contents 2</b-tab>
                 <b-tab title="確認資料" :title-link-class="linkClass(2)" title-item-class="none-click">Tab contents 3</b-tab>
             </b-tabs>
@@ -48,7 +55,9 @@
         const app = new Vue({
             el: '#app',
             data:{
-                tabIndex: 0
+                tabIndex: 0,
+                //隱私政策
+                alreadyRead: false
             },
             methods:{
                 linkClass(idx) {
